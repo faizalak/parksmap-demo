@@ -30,7 +30,7 @@ spec:
         volumeMode: Block
       source:
         pvc:
-          name: centos-stream8-ee62edff29ce
+          name: centos-stream8-c323729af4d6
           namespace: openshift-virtualization-os-images
   running: true
   template:
