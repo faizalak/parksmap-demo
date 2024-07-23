@@ -29,7 +29,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: topology.ebs.csi.aws.com/node
+              - key: topology.ebs.csi.aws.com/zone
                 operator: NotExists
       containers:
       - env:
