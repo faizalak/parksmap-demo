@@ -118,6 +118,7 @@ spec:
               - bash-completion
               - mongodb-org
             runcmd:
+              - sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/CentOS*
               - systemctl daemon-reload
               - systemctl enable mongod.service
               - systemctl start mongod.service
