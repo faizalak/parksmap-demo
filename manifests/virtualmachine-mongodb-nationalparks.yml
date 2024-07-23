@@ -54,7 +54,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: topology.ebs.csi.aws.com
+              - key: topology.ebs.csi.aws.com/zone
                 operator: Exists
       domain:
         cpu:
