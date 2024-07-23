@@ -100,7 +100,7 @@ spec:
             chpasswd: { expire: False }
             yum_repos:
               mongodb-org-3.6:
-                baseurl: https://repo.mongodb.org/yum/redhat/6/mongodb-org/3.6/x86_64/
+                baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
                 enabled: true
                 gpgcheck: true
                 gpgkey: https://www.mongodb.org/static/pgp/server-3.6.asc
