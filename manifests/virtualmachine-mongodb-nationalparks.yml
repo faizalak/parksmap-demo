@@ -30,7 +30,7 @@ spec:
         volumeMode: Block
       source:
         pvc:
-          name: centos7-8ea5aa5fcbf1
+          name: centos7-02aa45fbcbad
           namespace: openshift-virtualization-os-images
   running: true
   template:
@@ -49,6 +49,13 @@ spec:
         workload.template.kubevirt.io/server: "true"
         name: mongodb-nationalparks
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: topology.ebs.csi.aws.com
+                operator: Exists
       domain:
         cpu:
           cores: 1
