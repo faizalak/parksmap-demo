@@ -30,7 +30,7 @@ spec:
         volumeMode: Block
       source:
         pvc:
-          name: fedora-e8c7861050c7
+          name: rhel8-e71bfa29a35d
           namespace: openshift-virtualization-os-images
   running: true
   template:
