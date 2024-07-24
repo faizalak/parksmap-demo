@@ -88,15 +88,6 @@ spec:
       - name: nic-0
         pod: {}
       terminationGracePeriodSeconds: 0
-      accessCredentials:
-      - sshPublicKey:
-          source:
-            secret:
-              secretName: my-pub-key
-          propagationMethod:
-            qemuGuestAgent:
-              users:
-              - redhat
       volumes:
       - dataVolume:
           name: mongodb-nationalparks-rootdisk
