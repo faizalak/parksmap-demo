@@ -114,23 +114,21 @@ spec:
                 enabled: 1
                 gpgkey: https://www.mongodb.org/static/pgp/server-4.2.asc
                 name: MongoDB Repository
-            packages:
-              - bash-completion
-              - mongodb-org
             runcmd:
-              - sudo sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/CentOS*
-              - sudo systemctl daemon-reload
-              - sudo systemctl enable mongod.service
-              - sudo systemctl start mongod.service
+              - sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/CentOS*
+              - yum install -y mongodb-org
+              - systemctl daemon-reload
+              - systemctl enable mongod.service
+              - systemctl start mongod.service
               - >
                 mongo admin --host localhost --eval "db.createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'root', db: 'admin'}]});"
               - >
                 mongo admin --host localhost --eval "db.getSiblingDB('mongodb').createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'dbOwner', db: 'mongodb'}]});"
               - >
-                sudo sed -i -e 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf
+                sed -i -e 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf
               - >
-                sudo sed -i -e 's/^#security:/security:/g' /etc/mongod.conf
+                sed -i -e 's/^#security:/security:/g' /etc/mongod.conf
               - >
-                sudo sed -i -e '/^security:/a \  authorization: enabled' /etc/mongod.conf
-              - sudo systemctl restart mongod.service
+                sed -i -e '/^security:/a \  authorization: enabled' /etc/mongod.conf
+              - systemctl restart mongod.service
         name: cloudinitdisk
