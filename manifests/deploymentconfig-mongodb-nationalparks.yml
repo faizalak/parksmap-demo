@@ -30,7 +30,7 @@ spec:
             nodeSelectorTerms:
             - matchExpressions:
               - key: topology.ebs.csi.aws.com/zone
-                operator: NotExists
+                operator: DoesNotExist
       containers:
       - env:
         - name: MONGO_INITDB_ROOT_USERNAME
