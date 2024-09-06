@@ -99,22 +99,21 @@ spec:
             password: openshift
             chpasswd: { expire: False }
             yum_repos:
-              mongodb-org-4.2:
-                baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
+              mongodb-org-7.0:
+                baseurl: https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/
                 gpgcheck: 1
                 enabled: 1
-                gpgkey: https://www.mongodb.org/static/pgp/server-4.2.asc
+                gpgkey: https://www.mongodb.org/static/pgp/server-7.0.asc
                 name: MongoDB Repository
             runcmd:
-              - sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/CentOS*
               - yum install -y mongodb-org
               - systemctl daemon-reload
               - systemctl enable mongod.service
               - systemctl start mongod.service
               - >
-                mongo admin --host localhost --eval "db.createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'root', db: 'admin'}]});"
+                mongosh admin --host localhost --eval "db.createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'root', db: 'admin'}]});"
               - >
-                mongo admin --host localhost --eval "db.getSiblingDB('mongodb').createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'dbOwner', db: 'mongodb'}]});"
+                mongosh admin --host localhost --eval "db.getSiblingDB('mongodb').createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'dbOwner', db: 'mongodb'}]});"
               - >
                 sed -i -e 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf
               - >
