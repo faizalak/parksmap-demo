@@ -106,19 +106,19 @@ spec:
                 gpgkey: https://www.mongodb.org/static/pgp/server-7.0.asc
                 name: MongoDB Repository
             runcmd:
-              - yum install -y mongodb-org
-              - systemctl daemon-reload
-              - systemctl enable mongod.service
-              - systemctl start mongod.service
+              - sudo yum install -y mongodb-org
+              - sudo systemctl daemon-reload
+              - sudo systemctl enable mongod.service
+              - sudo systemctl start mongod.service
               - >
-                mongosh admin --host localhost --eval "db.createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'root', db: 'admin'}]});"
+                sudo mongosh admin --host localhost --eval "db.createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'root', db: 'admin'}]});"
               - >
-                mongosh admin --host localhost --eval "db.getSiblingDB('mongodb').createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'dbOwner', db: 'mongodb'}]});"
+                sudo mongosh admin --host localhost --eval "db.getSiblingDB('mongodb').createUser({user: 'mongodb', pwd: 'mongodb', roles: [{role: 'dbOwner', db: 'mongodb'}]});"
               - >
-                sed -i -e 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf
+                sudo sed -i -e 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf
               - >
-                sed -i -e 's/^#security:/security:/g' /etc/mongod.conf
+                sudo sed -i -e 's/^#security:/security:/g' /etc/mongod.conf
               - >
-                sed -i -e '/^security:/a \  authorization: enabled' /etc/mongod.conf
-              - systemctl restart mongod.service
+                sudo sed -i -e '/^security:/a \  authorization: enabled' /etc/mongod.conf
+              - sudo systemctl restart mongod.service
         name: cloudinitdisk
