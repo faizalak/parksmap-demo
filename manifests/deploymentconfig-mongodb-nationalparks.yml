@@ -55,9 +55,6 @@ spec:
         resources:
           limits:
             memory: 512Mi
-        securityContext:
-          capabilities: {}
-          privileged: false
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
