@@ -30,7 +30,7 @@ spec:
         volumeMode: Block
       source:
         pvc:
-          name: rhel8-4febb4946ebb
+          name: rhel8-a4f11df886b2
           namespace: openshift-virtualization-os-images
   running: true
   template:
