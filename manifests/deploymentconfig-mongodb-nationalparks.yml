@@ -80,6 +80,8 @@ spec:
             - matchExpressions:
               - key: topology.ebs.csi.aws.com/zone
                 operator: DoesNotExist
+              - key: hyperv.node.kubevirt.io/reset
+                operator: DoesNotExist
       volumes:
       - name: mongodb-nationalparks-data
         persistentVolumeClaim:
