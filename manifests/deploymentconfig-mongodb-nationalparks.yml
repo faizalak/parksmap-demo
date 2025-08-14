@@ -46,7 +46,7 @@ spec:
             secretKeyRef:
               key: database-name
               name: mongodb-nationalparks
-        image: mongodb:5.0
+        image: mongodb:5.0@sha256:f7a950ee4a1cc048300cd3b3da3e939974eb8278525101ac917dbed1a3ce3d51
         imagePullPolicy: IfNotPresent
         name: mongodb
         ports:
@@ -96,7 +96,7 @@ spec:
         kind: ImageStreamTag
         name: mongodb:5.0
         namespace: openshift
-      lastTriggeredImage: mongo:5.0@sha256:f7a950ee4a1cc048300cd3b3da3e939974eb8278525101ac917dbed1a3ce3d51
+      lastTriggeredImage: mongodb:5.0@sha256:f7a950ee4a1cc048300cd3b3da3e939974eb8278525101ac917dbed1a3ce3d51
     type: ImageChange
   - type: ConfigChange
 
