@@ -96,7 +96,7 @@ spec:
         kind: ImageStreamTag
         name: mongodb:5.0
         namespace: openshift
-      lastTriggeredImage: mongo@sha256:f493e0950c1c9b76ea0cdda9c2940c6d6360b60ac651b3e780f3eb6485e29fb0
+      lastTriggeredImage: mongodb:5.0
     type: ImageChange
   - type: ConfigChange
 
