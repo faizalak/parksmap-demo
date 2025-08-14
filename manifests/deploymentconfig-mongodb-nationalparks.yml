@@ -46,7 +46,7 @@ spec:
             secretKeyRef:
               key: database-name
               name: mongodb-nationalparks
-        image: mongo:5.0@sha256:f493e0950c1c9b76ea0cdda9c2940c6d6360b60ac651b3e780f3eb6485e29fb0
+        image: mongodb:5.0
         imagePullPolicy: IfNotPresent
         name: mongodb
         ports:
