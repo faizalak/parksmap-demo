@@ -46,7 +46,8 @@ spec:
             secretKeyRef:
               key: database-name
               name: mongodb-nationalparks
-        image: mongodb:5.0@sha256:f7a950ee4a1cc048300cd3b3da3e939974eb8278525101ac917dbed1a3ce3d51
+        #image: mongodb:5.0@sha256:f7a950ee4a1cc048300cd3b3da3e939974eb8278525101ac917dbed1a3ce3d51
+        image: 'image-registry.openshift-image-registry.svc:5000/parksmap-demo/mongo@sha256:3c8dd1b08f8a2ec0338902affd432b40130e5acf49d6e3a1ca05ff5168100059'
         imagePullPolicy: IfNotPresent
         name: mongodb
         ports:
@@ -86,17 +87,17 @@ spec:
       - name: mongodb-nationalparks-data
         persistentVolumeClaim:
           claimName: mongodb-nationalparks
-  test: false
-  triggers:
-  - imageChangeParams:
-      automatic: true
-      containerNames:
-      - mongodb
-      from:
-        kind: ImageStreamTag
-        name: mongodb:5.0
-        namespace: openshift
-      lastTriggeredImage: mongodb:5.0@sha256:f7a950ee4a1cc048300cd3b3da3e939974eb8278525101ac917dbed1a3ce3d51
-    type: ImageChange
-  - type: ConfigChange
+#  test: false
+#  triggers:
+#  - imageChangeParams:
+#      automatic: true
+#      containerNames:
+#      - mongodb
+#      from:
+#        kind: ImageStreamTag
+#        name: mongodb:5.0
+#        namespace: openshift
+#      lastTriggeredImage: mongodb:5.0@sha256:f7a950ee4a1cc048300cd3b3da3e939974eb8278525101ac917dbed1a3ce3d51
+#    type: ImageChange
+# - type: ConfigChange
 
