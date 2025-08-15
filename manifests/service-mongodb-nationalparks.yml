@@ -8,9 +8,6 @@ metadata:
   name: mongodb-nationalparks
   namespace: parksmap-demo
 spec:
-  clusterIP: 172.30.188.72
-  clusterIPs:
-  - 172.30.188.72
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
@@ -24,4 +21,3 @@ spec:
     name: mongodb-nationalparks
   sessionAffinity: None
   type: ClusterIP
-
